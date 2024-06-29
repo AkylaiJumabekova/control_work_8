@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axiosApi from '../../axios-api';
 import { Post } from '../../types';
-import { QuoteList } from '../../components/QuoteList/QuoteList';
+import QuoteList from '../../components/QuoteList/QuoteList';
 
-export const CategoryQuotes: React.FC = () => {
+const CategoryQuotes: React.FC = () => {
     const { categoryId } = useParams<{ categoryId: string }>();
     const [quotes, setQuotes] = useState<Post[]>([]);
 
@@ -17,5 +17,11 @@ export const CategoryQuotes: React.FC = () => {
         fetchQuotes();
     }, [categoryId]);
 
-    return <QuoteList quotes={quotes} />;
+    const handleDelete = (id: string) => {
+        setQuotes(quotes.filter((quote) => quote.id !== id));
+    };
+
+    return <QuoteList quotes={quotes} onDelete={handleDelete} />;
 };
+
+export default CategoryQuotes;

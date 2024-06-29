@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axiosApi from '../../axios-api';
 import { useNavigate } from 'react-router-dom';
 
-export const SubmitQuote: React.FC = () => {
+const SubmitQuote: React.FC = () => {
     const [author, setAuthor] = useState('');
     const [text, setText] = useState('');
     const [category, setCategory] = useState('star-wars');
@@ -54,3 +54,5 @@ export const SubmitQuote: React.FC = () => {
         </form>
     );
 };
+
+export default SubmitQuote;

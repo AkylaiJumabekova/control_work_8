@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axiosApi from '../../axios-api';
 import { Post } from '../../types';
-import { QuoteList } from '../../components/QuoteList/QuoteList';
+import QuoteList from '../../components/QuoteList/QuoteList';
 
-export const Home: React.FC = () => {
+const Home: React.FC = () => {
   const [quotes, setQuotes] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -15,5 +15,11 @@ export const Home: React.FC = () => {
     fetchQuotes();
   }, []);
 
-  return <QuoteList quotes={quotes} />;
+  const handleDelete = (id: string) => {
+    setQuotes(quotes.filter((quote) => quote.id !== id));
+  };
+
+  return <QuoteList quotes={quotes} onDelete={handleDelete} />;
 };
+
+export default Home;
