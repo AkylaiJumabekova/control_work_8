@@ -1,23 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import axiosApi from '../../axios-api';
 import { Post } from '../../types';
 
 const EditQuote: React.FC = () => {
     const { id } = useParams<{ id: string }>();
+    const navigate = useNavigate();
+    const [quote, setQuote] = useState<Post | null>(null);
     const [author, setAuthor] = useState('');
     const [text, setText] = useState('');
-    const [category, setCategory] = useState('star-wars');
-    const navigate = useNavigate();
+    const [category, setCategory] = useState('');
 
     useEffect(() => {
         const fetchQuote = async () => {
             const response = await axiosApi.get(`/quotes/${id}.json`);
-            const quote: Post = response.data;
-            setAuthor(quote.author);
-            setText(quote.text);
-            setCategory(quote.category);
+            const data = response.data;
+            setQuote(data);
+            setAuthor(data.author);
+            setText(data.text);
+            setCategory(data.category);
         };
+
         fetchQuote();
     }, [id]);
 
@@ -26,6 +29,10 @@ const EditQuote: React.FC = () => {
         await axiosApi.put(`/quotes/${id}.json`, { author, text, category });
         navigate('/');
     };
+
+    if (!quote) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <form onSubmit={onSubmit}>

@@ -1,0 +1,15 @@
+.quote-text {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.quote-author {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.quote-buttons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}

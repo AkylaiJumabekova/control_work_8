@@ -1,0 +1,18 @@
+.sidebar {
+    width: 200px;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin: 50px 50px 50px 0;
+}
+
+.nav-link {
+    display: block;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}

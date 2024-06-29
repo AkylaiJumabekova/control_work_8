@@ -1,0 +1,12 @@
+.main-container {
+    display: flex;
+    padding: 1rem;
+}
+
+.content-container {
+    flex: 1;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-right: 50px;
+}
