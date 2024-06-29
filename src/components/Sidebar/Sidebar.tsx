@@ -15,7 +15,11 @@ const Sidebar: React.FC = () => {
         <aside className="sidebar">
             <nav>
                 {categories.map((category) => (
-                    <NavLink className="nav-link" to={`/quotes/${category.id}`} key={category.id}>
+                    <NavLink
+                        className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                        to={`/quotes/${category.id}`}
+                        key={category.id}
+                    >
                         {category.title}
                     </NavLink>
                 ))}
